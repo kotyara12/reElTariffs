@@ -6,6 +6,10 @@
 
 static const char* logTAG = "ELTR";
 
+#ifndef CONFIG_ELTARIFFS_COUNT
+#define CONFIG_ELTARIFFS_COUNT 1
+#endif // CONFIG_ELTARIFFS_COUNT
+
 typedef struct {
   weekdays_t days = WEEK_EMPTY;
   timespan_t timespan = 00000000;
