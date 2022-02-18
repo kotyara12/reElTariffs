@@ -112,7 +112,7 @@ void elTariffsCheckTime()
 
   int8_t newTarif = -1;
   for (uint8_t i = 0; i < CONFIG_ELTARIFFS_COUNT; i++) {
-    if (checkWeekday(nowS, _tariffs.tariffs[i].days) && checkTimespan(nowS, _tariffs.tariffs[i].timespan)) {
+    if (checkWeekday(&nowS, _tariffs.tariffs[i].days) && checkTimespan(&nowS, _tariffs.tariffs[i].timespan)) {
       newTarif = i;
       break;
     };
