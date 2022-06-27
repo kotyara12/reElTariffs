@@ -1,8 +1,4 @@
 #include "reElTariffs.h"
-#include "reParams.h"
-#include "rStrings.h"
-#include "reEvents.h"
-#include "rLog.h"
 
 static const char* logTAG = "ELTR";
 
@@ -143,4 +139,23 @@ bool elTariffsEventHandlerRegister()
 void elTariffsEventHandlerUnregister()
 {
   eventHandlerUnregister(RE_TIME_EVENTS, RE_TIME_EVERY_MINUTE, &elTariffsTimeEventHandler);
+}
+
+// -----------------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------- Initialization ---------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------------
+
+void elTariffsRegister()
+{
+  #if defined(CONFIG_ELTARIFFS_TARIF1_TIMESPAN)
+    elTariffsSet(0, CONFIG_ELTARIFFS_TARIF1_DAYS, CONFIG_ELTARIFFS_TARIF1_TIMESPAN, CONFIG_ELTARIFFS_TARIF1_PRICE);
+  #endif // CONFIG_ELTARIFFS_TARIF1
+  #if defined(CONFIG_ELTARIFFS_TARIF2_TIMESPAN)
+    elTariffsSet(1, CONFIG_ELTARIFFS_TARIF2_DAYS, CONFIG_ELTARIFFS_TARIF2_TIMESPAN, CONFIG_ELTARIFFS_TARIF2_PRICE);
+  #endif // CONFIG_ELTARIFFS_TARIF2
+  #if defined(CONFIG_ELTARIFFS_TARIF3_TIMESPAN)
+    elTariffsSet(2, CONFIG_ELTARIFFS_TARIF3_DAYS, CONFIG_ELTARIFFS_TARIF3_TIMESPAN, CONFIG_ELTARIFFS_TARIF3_PRICE);
+  #endif // CONFIG_ELTARIFFS_TARIF3
+  elTariffsRegisterParameters();
+  elTariffsEventHandlerRegister();
 }

@@ -17,6 +17,12 @@
 #include "project_config.h"
 #include "def_consts.h"
 #include "rTypes.h"
+#include "rLog.h"
+#include "rStrings.h"
+#include "reParams.h"
+#include "reEvents.h"
+
+#if defined(CONFIG_ELTARIFFS_ENABLED) && CONFIG_ELTARIFFS_ENABLED
 
 #ifdef __cplusplus
 extern "C" {
@@ -37,8 +43,12 @@ void elTariffsCheckTime();
 bool elTariffsEventHandlerRegister();
 void elTariffsEventHandlerUnregister();
 
+void elTariffsRegister();
+
 #ifdef __cplusplus
 }
 #endif
+
+#endif // CONFIG_ELTARIFFS_ENABLED
 
 #endif // __RE_ELTARIFFS_H__
