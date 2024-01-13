@@ -1,5 +1,7 @@
 #include "reElTariffs.h"
 
+#if defined(CONFIG_ELTARIFFS_ENABLED) && CONFIG_ELTARIFFS_ENABLED
+
 static const char* logTAG = "ELTR";
 
 #ifndef CONFIG_ELTARIFFS_COUNT
@@ -159,3 +161,5 @@ void elTariffsRegister()
   elTariffsRegisterParameters();
   elTariffsEventHandlerRegister();
 }
+
+#endif // defined(CONFIG_ELTARIFFS_ENABLED) && CONFIG_ELTARIFFS_ENABLED
